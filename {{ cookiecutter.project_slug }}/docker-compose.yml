@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  { { cookiecutter.project_slug } }:
+    container_name: "{{ cookiecutter.project_slug }}"
+    image: ghcr.io/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}:latest
+    restart: unless-stopped
+    volumes:
+      # - /home/ubuntu/volumes/youtube_rss/data:/youtube_rss/data
+      - ./{{ cookiecutter.project_slug }}:/{{ cookiecutter.project_slug }}
+    ports:
+      - "5000:5000"

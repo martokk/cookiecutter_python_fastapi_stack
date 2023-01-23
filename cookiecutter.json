@@ -1,0 +1,21 @@
+{
+  "project_name": "Python Project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "project_description": "A python project.",
+  "github_username": "github_username",
+  "email": "email@example.com",
+
+  "first_model": "video",
+  "first_superuser_username": "{{cookiecutter.github_username}}",
+  "first_superuser_email": "{{cookiecutter.email}}",
+  "first_superuser_password": "changethis",
+
+  "telegram_api_token": "",
+  "telegram_chat_id": 0,
+ 
+  "_copy_without_render": [
+    "poetry.lock",
+    "{{ cookiecutter.project_slug }}/views/email-templates/src/**"
+  ]
+
+}
