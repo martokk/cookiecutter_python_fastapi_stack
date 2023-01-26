@@ -28,6 +28,9 @@ def init_git() -> None:
     print("Initializing git repository: Running `git init`...")
     subprocess.check_call(["git", "init"])
 
+    print("Adding initial commit: Running `git add .`...")
+    subprocess.check_call(["git", "add", "."])
+
     print("Creating main branch: Running `git branch -M main`...")
     subprocess.check_call(["git", "branch", "-M", "main"])
 
@@ -55,12 +58,6 @@ def init_git() -> None:
         ]
     )
 
-    print("Adding initial commit: Running `git add .`...")
-    subprocess.check_call(["git", "add", "."])
-
-    print("Committing initial commit: Running `git commit -m 'Initial commit'`...")
-    subprocess.check_call(["git", "commit", "-q", "-m", "Initial commit"])
-
 
 def install_dependencies() -> None:
     """Install dependencies."""
@@ -78,6 +75,18 @@ def make_codestyle() -> None:
     """Run codestyle.""" ""
     print("Running codestyle: Running `make codestyle`...")
     subprocess.check_call(["make", "codestyle"])
+
+
+def run_pre_commit() -> None:
+    """Run pre-commit hooks."""
+    print("Running pre-commit hooks: Running `pre-commit run --all-files`...")
+    subprocess.check_call(["pre-commit", "run", "--all-files"])
+
+
+def commit_git() -> None:
+    """Commit git."""
+    print("Committing initial commit: Running `git commit -m 'Initial commit'`...")
+    subprocess.check_call(["git", "commit", "-q", "-m", "Initial commit"])
 
 
 def init_alembic_database_migrations() -> None:
@@ -142,11 +151,15 @@ def print_further_instructions() -> None:
 
 def main() -> None:
     install_poetry()
-    init_git()
     install_dependencies()
-    install_pre_commit()
     init_alembic_database_migrations()
+
+    init_git()
+    install_pre_commit()
+
     make_codestyle()
+    run_pre_commit()
+    commit_git()
 
     print_further_instructions()
 
