@@ -6,7 +6,7 @@ from sqlmodel import Field, Relationship, SQLModel
 from {{ cookiecutter.project_slug }}.core.uuid import generate_uuid_from_string
 
 if TYPE_CHECKING:
-    from {{ cookiecutter.project_slug }}.models.{{ cookiecutter.first_model }} import {{ cookiecutter.first_model }}  # pragma: no cover
+    from {{ cookiecutter.project_slug }}.models.{{ cookiecutter.first_model }} import {{ cookiecutter.first_model | title }}  # pragma: no cover
 
 
 class UserBase(SQLModel):
@@ -25,7 +25,7 @@ class UserBase(SQLModel):
 
 class User(UserBase, table=True):
     hashed_password: str = Field(nullable=False)
-    {{ cookiecutter.first_model }}s: list["{{ cookiecutter.first_model }}"] = Relationship(
+    {{ cookiecutter.first_model }}s: list["{{ cookiecutter.first_model | title }}"] = Relationship(
         back_populates="owner",
         sa_relationship_kwargs={
             "cascade": "all, delete",

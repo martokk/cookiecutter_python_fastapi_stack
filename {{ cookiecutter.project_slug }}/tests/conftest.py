@@ -131,11 +131,11 @@ async def fixture_db_with_{{ cookiecutter.first_model }}s(db_with_user: Session)
     owner = await crud.user.get(db=db_with_user, username="test_user")
     {{ cookiecutter.first_model }}s = []
     for i in range(3):
-        {{ cookiecutter.first_model }}_create = models.{{ cookiecutter.first_model|title }}Create(
+        {{ cookiecutter.first_model }}_create = models.{{ cookiecutter.first_model | title }}Create(
             id=f"{i}{i}{i}{i}{i}{i}{i}{i}",
             uploader="test",
             uploader_id="test_uploader_id",
-            title=f"Example {{ cookiecutter.first_model }} {i}",
+            title=f"Example {{ cookiecutter.first_model | title }} {i}",
             description=f"This is example {{ cookiecutter.first_model }} {i}.",
             duration=417,
             thumbnail="https://sp.rmbl.ws/s8d/R/0_FRh.oq1b.jpg",

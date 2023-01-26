@@ -6,7 +6,7 @@ from {{ cookiecutter.project_slug }} import settings
 TEST_ITEM = {
     "uploader": "test",
     "uploader_id": "test_uploader_id",
-    "title": "Example {{ cookiecutter.first_model }} 1",
+    "title": "Example {{ cookiecutter.first_model | title }} 1",
     "description": "This is example {{ cookiecutter.first_model }} 1.",
     "duration": 417,
     "thumbnail": "https://sp.rmbl.ws/s8d/R/0_FRh.oq1b.jpg",
@@ -55,7 +55,7 @@ def test_create_duplicate_item(client: TestClient, superuser_token_headers: dict
     )
     assert response.status_code == 200
     duplicate = response.json()
-    assert duplicate["detail"] == "{{ cookiecutter.first_model }} already exists"
+    assert duplicate["detail"] == "{{ cookiecutter.first_model | title }} already exists"
 
 
 def test_read_item(client: TestClient, superuser_token_headers: dict[str, str]) -> None:
@@ -97,7 +97,7 @@ def test_get_item_not_found(client: TestClient, superuser_token_headers: dict[st
     )
     assert response.status_code == 404
     content = response.json()
-    assert content["detail"] == "{{ cookiecutter.first_model }} not found"
+    assert content["detail"] == "{{ cookiecutter.first_model | title }} not found"
 
 
 def test_get_item_forbidden(

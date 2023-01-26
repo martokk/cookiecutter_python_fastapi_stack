@@ -13,7 +13,7 @@ if TYPE_CHECKING:
     from .user import User  # pragma: no cover
 
 
-class {{ cookiecutter.first_model|title }}Base(TimestampModel, SQLModel):
+class {{ cookiecutter.first_model | title }}Base(TimestampModel, SQLModel):
     id: str = Field(default=None, primary_key=True, nullable=False)
     uploader: str = Field(default=None)
     uploader_id: str = Field(default=None)
@@ -27,11 +27,11 @@ class {{ cookiecutter.first_model|title }}Base(TimestampModel, SQLModel):
     # updated_at: datetime.datetime = Field(default=None)
 
 
-class {{ cookiecutter.first_model }}({{ cookiecutter.first_model|title }}Base, table=True):
+class {{ cookiecutter.first_model | title }}({{ cookiecutter.first_model | title }}Base, table=True):
     owner: "User" = Relationship(back_populates="{{ cookiecutter.first_model }}s")
 
 
-class {{ cookiecutter.first_model|title }}Create({{ cookiecutter.first_model|title }}Base):
+class {{ cookiecutter.first_model | title }}Create({{ cookiecutter.first_model | title }}Base):
     @root_validator(pre=True)
     @classmethod
     def set_pre_validation_defaults(cls, values: dict[str, Any]) -> dict[str, Any]:
@@ -45,9 +45,9 @@ class {{ cookiecutter.first_model|title }}Create({{ cookiecutter.first_model|tit
         }
 
 
-class {{ cookiecutter.first_model|title }}Update({{ cookiecutter.first_model|title }}Base):
+class {{ cookiecutter.first_model | title }}Update({{ cookiecutter.first_model | title }}Base):
     pass
 
 
-class {{ cookiecutter.first_model|title }}Read({{ cookiecutter.first_model|title }}Base):
+class {{ cookiecutter.first_model | title }}Read({{ cookiecutter.first_model | title }}Base):
     pass

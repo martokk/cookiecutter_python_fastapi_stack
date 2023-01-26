@@ -5,10 +5,10 @@ from {{ cookiecutter.project_slug }} import crud, models
 from {{ cookiecutter.project_slug }}.api import deps
 
 router = APIRouter()
-ModelClass = models.{{ cookiecutter.first_model }}
-ModelReadClass = models.{{ cookiecutter.first_model|title }}Read
-ModelCreateClass = models.{{ cookiecutter.first_model|title }}Create
-ModelUpdateClass = models.{{ cookiecutter.first_model|title }}Update
+ModelClass = models.{{ cookiecutter.first_model | title }}
+ModelReadClass = models.{{ cookiecutter.first_model | title }}Read
+ModelCreateClass = models.{{ cookiecutter.first_model | title }}Create
+ModelUpdateClass = models.{{ cookiecutter.first_model | title }}Update
 model_crud = crud.{{ cookiecutter.first_model }}
 
 
@@ -38,7 +38,7 @@ async def create_with_uploader_id(
             db=db, in_obj=in_obj, owner_id=current_active_user.id
         )
     except crud.RecordAlreadyExistsError as exc:
-        raise HTTPException(status_code=status.HTTP_200_OK, detail="{{ cookiecutter.first_model }} already exists") from exc
+        raise HTTPException(status_code=status.HTTP_200_OK, detail="{{ cookiecutter.first_model | title }} already exists") from exc
 
 
 @router.get("/{id}", response_model=ModelReadClass)
@@ -66,7 +66,7 @@ async def get(
     {{ cookiecutter.first_model }} = await model_crud.get_or_none(id=id, db=db)
     if not {{ cookiecutter.first_model }}:
         if crud.user.is_superuser(user_=current_user):
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="{{ cookiecutter.first_model }} not found")
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="{{ cookiecutter.first_model | title }} not found")
     else:
         if crud.user.is_superuser(user_=current_user) or {{ cookiecutter.first_model }}.owner_id == current_user.id:
             return {{ cookiecutter.first_model }}
@@ -129,7 +129,7 @@ async def update(
     {{ cookiecutter.first_model }} = await model_crud.get_or_none(id=id, db=db)
     if not {{ cookiecutter.first_model }}:
         if crud.user.is_superuser(user_=current_user):
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="{{ cookiecutter.first_model }} not found")
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="{{ cookiecutter.first_model | title }} not found")
     else:
         if crud.user.is_superuser(user_=current_user) or {{ cookiecutter.first_model }}.owner_id == current_user.id:
             return await model_crud.update(db=db, in_obj=in_obj, id=id)
@@ -162,7 +162,7 @@ async def delete(
     {{ cookiecutter.first_model }} = await model_crud.get_or_none(id=id, db=db)
     if not {{ cookiecutter.first_model }}:
         if crud.user.is_superuser(user_=current_user):
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="{{ cookiecutter.first_model }} not found")
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="{{ cookiecutter.first_model | title }} not found")
     else:
         if crud.user.is_superuser(user_=current_user) or {{ cookiecutter.first_model }}.owner_id == current_user.id:
             return await model_crud.remove(id=id, db=db)

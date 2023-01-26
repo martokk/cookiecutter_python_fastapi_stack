@@ -1,17 +1,17 @@
 <html>
     <header>
-        <title>All {{ cookiecutter.first_model }}s<</title>
+        <title>All {{ cookiecutter.first_model | title }}s<</title>
     </header>
     <body>
-        <h2 class="heading">All {{ cookiecutter.first_model }}s</h2>
+        <h2 class="heading">All {{ cookiecutter.first_model | title }}s</h2>
         <ul class="ul-sources">
-            {{"{% for "}}{{ cookiecutter.first_model }} in {{ cookiecutter.first_model }}{{"s %}"}}
+            {% for {{ cookiecutter.first_model }} in {{ cookiecutter.first_model }}s %}
                 <li class="li-{{ cookiecutter.first_model }}">
-                    <span class="li-{{ cookiecutter.first_model }}-id">{{"{{ "}}{{ cookiecutter.first_model }}.id{{" }}"}}</span>
-                    <a class="li-{{ cookiecutter.first_model }}-title" href="{{"{{ "}}{{ cookiecutter.first_model }}.url{{" }}"}}">{{"{{"}} {{ cookiecutter.first_model }}.title{{" }}"}}</a>
-                    <a class="li-{{ cookiecutter.first_model }}-url" href="{{"{{ "}}{{ cookiecutter.first_model }}.url{{" }}"}}">{{"{{ "}}{{ cookiecutter.first_model }}.url{{" }}"}}</a>
+                    <span class="li-{{ cookiecutter.first_model }}-id">{{ {{ cookiecutter.first_model }}.id }}</span>
+                    <a class="li-{{ cookiecutter.first_model }}-title" href="{{ {{ cookiecutter.first_model }}.url }}">{{ {{ cookiecutter.first_model }}.title }}</a>
+                    <a class="li-{{ cookiecutter.first_model }}-url" href="{{ {{ cookiecutter.first_model }}.url }}">{{ {{ cookiecutter.first_model }}.url }}</a>
                 </li>
-            {{"{% endfor %}"}}
+            {% endfor %}
         </ul>
     </body>
 </html>
