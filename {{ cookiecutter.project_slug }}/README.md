@@ -15,7 +15,7 @@
 [![License](https://img.shields.io/github/license/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }})](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/blob/master/LICENSE)
 
 
-A project template stack for FastAPI projects.
+{{ cookiecutter.project_description }}
 
 </div>
 

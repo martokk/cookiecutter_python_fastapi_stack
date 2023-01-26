@@ -54,7 +54,7 @@ class Settings(BaseSettings):
     NOTIFY_ON_START: bool = True
 
     # Project Settings
-    PROJECT_NAME: str = "Python FastAPI Stack"
+    PROJECT_NAME: str = "{{ cookiecutter.project_name }}"
     PACKAGE_NAME: str = PROJECT_NAME.lower().replace("-", "_").replace(" ", "_")
     PROJECT_DESCRIPTION: str = (
         f"{PROJECT_NAME}: poetry, fastapi, sqlmodel, alembic, loguru, crud, notify."

@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  { { cookiecutter.project_slug } }:
+  {{ cookiecutter.project_slug }}:
     container_name: "{{ cookiecutter.project_slug }}"
     image: ghcr.io/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}:latest
     restart: unless-stopped
