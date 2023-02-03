@@ -93,14 +93,14 @@ def git_commit(message: str) -> None:
 
 def replace_file_strings(find: str, replace: str) -> None:
     """
-    Replace file strings with given variable
+    Search and replace strings in all files
     """
-    for fname in Path(".").rglob("*"):
-        with open(fname) as f:
-            s = f.read()
-        s = s.replace(find, replace)
-        with open(fname, "w") as f:
-            f.write(s)
+    for filename in Path(".").rglob("*"):
+        with open(filename, "r") as f:
+            filedata = f.read()
+        filedata = filedata.replace(find, replace)
+        with open(filename, "w") as f:
+            f.write(filedata)
 
 
 def main() -> None:
@@ -108,7 +108,7 @@ def main() -> None:
         # validate_project_slug(project_slug=PROJECT_SLUG)
 
         # Clone the repo
-        clone_repo(project_slug=PROJECT_SLUG)
+        clone_repo(project_slug="{{ cookiecutter.project_slug }}")
         git_commit("Initial commit")
         print("Successfully cloned the repo")
 
