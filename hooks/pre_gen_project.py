@@ -6,8 +6,10 @@ import sys
 import os
 from pathlib import Path
 
-PROJECT_SLUG = "{{ cookiecutter.project_slug }}"
-GITHUB_USERNAME = "{{ cookiecutter.github_username }}"
+PROJECT_SLUG = "martokk"
+GITHUB_USERNAME = "tubecast"
+# PROJECT_SLUG = "{{ cookiecutter.project_slug }}"
+# GITHUB_USERNAME = "{{ cookiecutter.github_username }}"
 
 MODULE_REGEX = re.compile(r"^[a-z][a-z0-9\-\_]+[a-z0-9]$")
 SEMVER_REGEX = re.compile(
