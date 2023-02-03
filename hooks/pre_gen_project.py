@@ -6,8 +6,8 @@ import sys
 import os
 from pathlib import Path
 
-PROJECT_SLUG = "martokk"
-GITHUB_USERNAME = "tubecast"
+PROJECT_SLUG = "tubecast"
+GITHUB_USERNAME = "martokk"
 # PROJECT_SLUG = "{{ cookiecutter.project_slug }}"
 # GITHUB_USERNAME = "{{ cookiecutter.github_username }}"
 
