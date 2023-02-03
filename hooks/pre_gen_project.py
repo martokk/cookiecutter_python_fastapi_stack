@@ -96,11 +96,21 @@ def replace_file_strings(find: str, replace: str) -> None:
     Search and replace strings in all files
     """
     for filename in Path(".").rglob("*"):
-        with open(filename, "r") as f:
-            filedata = f.read()
-        filedata = filedata.replace(find, replace)
-        with open(filename, "w") as f:
-            f.write(filedata)
+        # check if the path is a file
+        if os.path.isfile(filename):
+            with open(filename, "r") as f:
+                filedata = f.read()
+            filedata = filedata.replace(find, replace)
+            with open(filename, "w") as f:
+                f.write(filedata)
+        else:
+            # if the path is not a file, handle the error
+            try:
+                raise IsADirectoryError(
+                    f"{filename} is a directory and cannot be used to write files"
+                )
+            except IsADirectoryError:
+                print(f"{filename} is a directory, ignoring this file")
 
 
 def main() -> None:
