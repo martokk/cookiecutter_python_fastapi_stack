@@ -15,7 +15,10 @@
  
   "_copy_without_render": [
     "poetry.lock",
-    "{{ cookiecutter.project_slug }}/views/email-templates/src/**"
+    "{{ cookiecutter.project_slug }}/views/email-templates/src/**",
+    "{{ cookiecutter.project_slug }}/..git/**",
+    "**/.git/**",
+    "**/thunderclient.json"
   ]
 
 }
